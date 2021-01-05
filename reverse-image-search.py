@@ -2,8 +2,9 @@
 import requests
 import webbrowser
 import sys
+import os
 
-filePath = '/Users/david/Desktop/searchme.jpg'
+filePath = os.path.expanduser('~/Desktop/searchme.jpg')
 try:
     if sys.argv[1]:
         filePath = sys.argv[1]

@@ -1,0 +1,2 @@
+# SOURCE this file to set up paths as usual in Automator scripts, etc.
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH:~/bin:~/.local/bin"

@@ -3,6 +3,8 @@ import requests
 import webbrowser
 import sys
 import os
+import re
+from pprint import pprint
 
 filePath = os.path.expanduser('~/Desktop/searchme.jpg')
 try:
@@ -11,8 +13,9 @@ try:
 except IndexError:
     pass
 
-searchUrl = 'http://www.google.com/searchbyimage/upload'
+searchUrl = 'https://lens.google.com/upload?hl=en&re=df&st=1669959570733&ep=gisbubb'
 multipart = {'encoded_image': (filePath, open(filePath, 'rb')), 'image_content': ''}
 response = requests.post(searchUrl, files=multipart, allow_redirects=False)
-fetchUrl = response.headers['Location']
+m = re.match(r'.*URL=(.*)"', response.text)
+fetchUrl = m.group(1)
 webbrowser.open(fetchUrl)
